@@ -1,7 +1,9 @@
 <?php
+
+require '../core/Controller.php';
 require '../models/ArtistManager.php';
 
-class ArtistController
+class ArtistController extends Controller
 {
     private ArtistManager $artistManager;
 
@@ -15,8 +17,9 @@ class ArtistController
     {
         $artists = $this->artistManager->getAllArtists();
 
-        $template = '../views/artist/index.html.php';
-        require '../views/layout.html.php';
+        $this->render('artist/index.html.php',[
+            'artists' => $artists,
+        ]);
     }
 
     // GET & POST
@@ -34,8 +37,7 @@ class ArtistController
                 }
             }
         }
-
-        $template = '../views/artist/create.html.php';
-        require '../views/layout.html.php';
+        
+        $this->render('artist/create.html.php');
     }
 }

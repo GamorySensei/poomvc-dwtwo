@@ -1,13 +1,14 @@
 <?php
 
-class ErrorController
+require '../core/Controller.php';
+
+class ErrorController extends Controller
 {
 
     function notFound()
     {
         http_response_code(404);
-        $template = '../views/error/notFound.html.php';
-        require '../views/layout.html.php';
+        $this->render('error/notFound.html.php');
     }
 
 }
