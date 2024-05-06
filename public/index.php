@@ -1,54 +1,39 @@
 <?php
 
-// On inclut dynamiquement le fichier de contrôleur
-if(!empty($_GET['controller']))
+// Routeur
+
+try
 {
-    $controllerName = $_GET['controller'];
+    // Indetification du contrôleur
+    $controllerName = (!empty($_GET['controller']) ? ucfirst($_GET['controller']) : 'Home') . 'Controller';
+    $controllerFilename = '../controllers/' . $controllerName . '.php';
+
+    if(!file_exists($controllerFilename))
+        throw new Exception("Controller file does not exist");
+
+    require $controllerFilename;
+    $controller = new $controllerName();
+
+    // Indentification de l'action
+    $action = !empty($_GET['action']) ? $_GET['action'] : 'index';
+
+    if(!method_exists($controller, $action))
+        throw new Exception("Action '" . $action . "' does not exist");
+
+    $controller->$action();
+
 }
-else
-{
-    $controllerName = 'home'; // Contrôleur par défaut
-}
-
-$controllerClassName = ucfirst($controllerName) . 'Controller'; // ex: HomeController
-
-// On vérifie que le fichier de contrôleur existe
-if(file_exists('../controllers/' . $controllerClassName .'.php'))
+catch (Exception $e)
 {
 
-    // On inclut dynamiquement le fichier de contrôleur
-    require '../controllers/' . $controllerClassName .'.php';
-
-    // On instancie le contrôleur
-    $controller = new $controllerClassName(); // ex: new HomeController() par défaut
-
-
-    // On vérifie qu'une action est passée dans l'URL
-    if(!empty($_GET['action']))
+    if(isset($_GET['debug']))
     {
-        $action = $_GET['action'];
-    }
-    else
-    {
-        $action = 'index'; // Action par défaut du contrôleur
-    }
-
-    if(method_exists($controller, $action))
-    {
-        $controller->$action(); // index() par défaut
+        echo $e->getMessage();
     }
     else
     {
         require '../controllers/ErrorController.php';
-        $controller = new ErrorController(); //
-        $controller->notFound(); // Action 404
+        $controller = new ErrorController();
+        $controller->notFound();
     }
-
 }
-else
-{
-    require '../controllers/ErrorController.php';
-    $controller = new ErrorController(); //
-    $controller->notFound(); // Action 404
-}
-
