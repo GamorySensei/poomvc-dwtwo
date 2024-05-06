@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [0.1.0] - 06-05-2024
 
+### 🚜 Refactor
+
+- Refactorisation du routeur dans index.php
+
 ### 📚 Documentation
 
 - Ajout du fichier CHANGELOG
