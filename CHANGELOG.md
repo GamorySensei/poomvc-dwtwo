@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.1.0] - 06-05-2024
+## [0.1.0] - 07-05-2024
+
+### 🐛 Bug Fixes
+
+- Protection contre les failles XSS directement dans la vue
 
 ### 🚜 Refactor
 
