@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### 🐛 Bug Fixes
 
 - Protection contre les failles XSS directement dans la vue
+- Correctif au niveau du nettoyage des donnes de la vue
 
 ### 🚜 Refactor
 
