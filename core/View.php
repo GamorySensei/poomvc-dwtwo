@@ -9,9 +9,7 @@ class View
     public function __construct(string $template, array $data = [])
     {
         $this->template = $template;
-        $this->data = array_map(function($value){
-            return htmlspecialchars($value);
-        }, $data);
+        $this->data = $this->cleanData($data);
     }
 
     public function render()
@@ -26,5 +24,28 @@ class View
         require '../views/layout.html.php';
     }
 
+    private function cleanData(array $data)
+    {
+        return array_map(function($value){
+
+            if(empty($value))
+            {
+                return $value;
+            }
+
+            if(is_array($value))
+            {
+                return $this->cleanData($value);
+            }
+            else if(is_object($value))
+            {
+                return $value;
+            }
+            else
+            {
+                return htmlspecialchars($value);
+            }
+        }, $data);
+    }
 
 }
