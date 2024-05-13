@@ -2,7 +2,7 @@
 
 require '../core/View.php';
 
-class Controller
+abstract class Controller
 {
     
     /**
@@ -18,3 +18,4 @@ class Controller
         $view->render();
     }
 }
+

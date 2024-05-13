@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.1.0] - 07-05-2024
+## [0.1.0] - 13-05-2024
+
+### 🚀 Features
+
+- Mise en place de la sécurisation des pages
 
 ### 🐛 Bug Fixes
 

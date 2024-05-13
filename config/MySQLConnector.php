@@ -9,7 +9,11 @@ class MySQLConnector
     public function __construct()
     {
         try {
-            $this->connection = new PDO('mysql:host=localhost;dbname=spotiflux;charset=utf8mb4', 'root', '', [
+
+            $config = require('../config/mysql.config.php');
+
+
+            $this->connection = new PDO('mysql:host='.$config['DB_HOST'].';dbname='.$config['DB_NAME'].';charset=utf8mb4', $config['DB_USER'], $config['DB_PASSWORD'], [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             ]);
         } catch (PDOException $e) {

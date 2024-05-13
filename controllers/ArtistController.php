@@ -1,14 +1,15 @@
 <?php
 
-require '../core/Controller.php';
+require '../controllers/PrivateController.php';
 require '../models/ArtistManager.php';
 
-class ArtistController extends Controller
+class ArtistController extends PrivateController
 {
     private ArtistManager $artistManager;
 
     public function __construct()
     {
+        parent::__construct();
         $this->artistManager = new ArtistManager();
     }
 
