@@ -20,10 +20,10 @@ abstract class Controller
 
     public function redirectToRoute($controller, $action = null, $area = null)
     {
-        $url = '/';
+        $url = '/?';
         if($area)
         {
-            $url .= $area . '&controller=' . $controller;
+            $url .= 'area=' . $area . '&controller=' . $controller;
         }
         else
         {
