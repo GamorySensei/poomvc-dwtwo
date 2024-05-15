@@ -17,5 +17,26 @@ abstract class Controller
         $view = new View($template, $data);
         $view->render();
     }
+
+    public function redirectToRoute($controller, $action = null, $area = null)
+    {
+        $url = '/';
+        if($area)
+        {
+            $url .= $area . '&controller=' . $controller;
+        }
+        else
+        {
+            $url .= 'controller=' . $controller;
+        }
+
+        if($action)
+        {
+            $url .= '&action=' . $action;
+        }
+
+        header('Location: ' . $url);
+        exit; 
+    }
 }
 

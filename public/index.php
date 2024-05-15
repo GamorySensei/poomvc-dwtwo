@@ -8,9 +8,12 @@ session_start();
 
 try
 {
+    // Indentification de la zone
+    $area = !empty($_GET['area']) ? $_GET['area'] : 'Web';
+
     // Indetification du contrôleur
     $controllerName = (!empty($_GET['controller']) ? ucfirst($_GET['controller']) : 'Home') . 'Controller';
-    $controllerFilename = '../controllers/' . $controllerName . '.php';
+    $controllerFilename = '../controllers/'.$area.'/' . $controllerName . '.php';
 
     if(!file_exists($controllerFilename))
         throw new Exception("Controller file does not exist");
@@ -36,7 +39,7 @@ catch (Exception $e)
     }
     else
     {
-        require '../controllers/ErrorController.php';
+        require '../controllers/Web/ErrorController.php';
         $controller = new ErrorController();
         $controller->notFound();
     }

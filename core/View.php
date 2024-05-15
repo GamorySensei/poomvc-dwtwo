@@ -6,6 +6,8 @@ class View
 
     private array $data;
 
+    private string $layout = 'web/layout.html.php';
+
     public function __construct(string $template, array $data = [])
     {
         $this->template = $template;
@@ -21,7 +23,7 @@ class View
         require '../views/' . $this->template;
         $bodyContent = ob_get_clean(); // Récupération du contenu executé en mémoire tampon
 
-        require '../views/layout.html.php';
+        require '../views/' . $this->layout;
     }
 
     private function cleanData(array $data)
@@ -46,6 +48,26 @@ class View
                 return htmlspecialchars($value);
             }
         }, $data);
+    }
+
+    public function linkToRoute($controller, $action = null, $area = null)
+    {
+        $url = '/?';
+        if($area)
+        {
+            $url .= 'area=' . $area . '&controller=' . $controller;
+        }
+        else
+        {
+            $url .= 'controller=' . $controller;
+        }
+
+        if($action)
+        {
+            $url .= '&action=' . $action;
+        }
+
+        return $url;
     }
 
 }
