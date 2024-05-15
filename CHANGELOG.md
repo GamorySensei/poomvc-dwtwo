@@ -2,11 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.1.0] - 13-05-2024
+## [0.1.0] - 15-05-2024
 
 ### 🚀 Features
 
 - Mise en place de la sécurisation des pages
+- Définition et gestion des zones
 
 ### 🐛 Bug Fixes
 
