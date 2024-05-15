@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Mise en place de la sécurisation des pages
 - Définition et gestion des zones
+- Amélioration du framework
 
 ### 🐛 Bug Fixes
 
