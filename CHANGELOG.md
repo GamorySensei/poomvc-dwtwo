@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 
 - Protection contre les failles XSS directement dans la vue
 - Correctif au niveau du nettoyage des donnes de la vue
+- Correction au niveau du Controller.php
 
 ### 🚜 Refactor
 
