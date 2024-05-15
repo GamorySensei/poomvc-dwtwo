@@ -1,6 +1,7 @@
 <?php
+namespace App\Models;
 
-require '../config/MySQLConnector.php';
+use App\Config\MySQLConnector;
 
 class ArtistManager
 {

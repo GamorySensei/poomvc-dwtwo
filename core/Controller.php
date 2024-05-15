@@ -1,6 +1,8 @@
 <?php
 
-require '../core/View.php';
+namespace App\Core;
+
+//require '../core/View.php';
 
 abstract class Controller
 {

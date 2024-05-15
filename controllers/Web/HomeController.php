@@ -1,5 +1,8 @@
 <?php
-require '../core/Controller.php';
+
+namespace App\Controllers\Web;
+
+use App\Core\Controller;
 
 class HomeController extends Controller
 {

@@ -1,6 +1,8 @@
 <?php
 
-require BASE_URL . 'core/Controller.php';
+namespace App\Controllers\Admin;
+
+use App\Core\Controller;
 
 abstract class PrivateController extends Controller
 {

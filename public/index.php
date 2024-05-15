@@ -1,8 +1,9 @@
 <?php
 
 define('BASE_URL', '../');
-
 session_start();
+
+require BASE_URL . 'config/autoload.php';
 
 // Routeur
 
@@ -12,13 +13,7 @@ try
     $area = !empty($_GET['area']) ? $_GET['area'] : 'Web';
 
     // Indetification du contrôleur
-    $controllerName = (!empty($_GET['controller']) ? ucfirst($_GET['controller']) : 'Home') . 'Controller';
-    $controllerFilename = '../controllers/'.$area.'/' . $controllerName . '.php';
-
-    if(!file_exists($controllerFilename))
-        throw new Exception("Controller file does not exist");
-
-    require $controllerFilename;
+    $controllerName = "App\\Controllers\\".ucfirst($area)."\\" . (!empty($_GET['controller']) ? ucfirst($_GET['controller']) : 'Home') . 'Controller';
     $controller = new $controllerName();
 
     // Indentification de l'action
@@ -30,7 +25,7 @@ try
     $controller->$action();
 
 }
-catch (Exception $e)
+catch (\Exception $e)
 {
 
     if(isset($_GET['debug']))
@@ -40,7 +35,7 @@ catch (Exception $e)
     else
     {
         require '../controllers/Web/ErrorController.php';
-        $controller = new ErrorController();
+        $controller = new App\Controllers\Web\ErrorController();
         $controller->notFound();
     }
 }

@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Config;
 
 class MySQLConnector
 {
@@ -13,10 +13,10 @@ class MySQLConnector
             $config = require('../config/mysql.config.php');
 
 
-            $this->connection = new PDO('mysql:host='.$config['DB_HOST'].';dbname='.$config['DB_NAME'].';charset=utf8mb4', $config['DB_USER'], $config['DB_PASSWORD'], [
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            $this->connection = new \PDO('mysql:host='.$config['DB_HOST'].';dbname='.$config['DB_NAME'].';charset=utf8mb4', $config['DB_USER'], $config['DB_PASSWORD'], [
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
             ]);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             die($e->getMessage());
         }
     }

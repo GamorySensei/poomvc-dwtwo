@@ -1,7 +1,8 @@
 <?php
 
-require '../controllers/Admin/PrivateController.php';
-require '../models/ArtistManager.php';
+namespace App\Controllers\Admin;
+
+use App\Models\ArtistManager;
 
 class ArtistController extends PrivateController
 {
